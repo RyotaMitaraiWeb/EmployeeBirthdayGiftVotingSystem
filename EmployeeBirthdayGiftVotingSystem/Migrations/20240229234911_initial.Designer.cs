@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace EmployeeBirthdayGiftVotingSystem.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240229214552_initial")]
+    [Migration("20240229234911_initial")]
     partial class initial
     {
         /// <inheritdoc />
@@ -101,6 +101,104 @@ namespace EmployeeBirthdayGiftVotingSystem.Migrations
                         .HasDatabaseName("UserNameIndex");
 
                     b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("8018e901-3aa6-4345-8675-fadbb6852c7b"),
+                            AccessFailedCount = 0,
+                            Birthday = new DateTime(1998, 12, 31, 22, 0, 0, 0, DateTimeKind.Utc),
+                            ConcurrencyStamp = "db84812e-567c-48a4-a218-b3188082f2f5",
+                            EmailConfirmed = false,
+                            FirstName = "John",
+                            LastName = "Doe",
+                            LockoutEnabled = false,
+                            NormalizedUserName = "THEREALJOHN",
+                            PasswordHash = "AQAAAAIAAYagAAAAEHOlTLQ1ClmzrSJStpYeEyt3NvnY5TRVyvaQtXmSNd2V6aH9plVqlRXqFXkN0yOPEw==",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
+                            UserName = "therealjohn"
+                        },
+                        new
+                        {
+                            Id = new Guid("6dc922b1-3987-4a34-83ec-c8b27a718fbb"),
+                            AccessFailedCount = 0,
+                            Birthday = new DateTime(1999, 1, 1, 22, 0, 0, 0, DateTimeKind.Utc),
+                            ConcurrencyStamp = "da13eb63-5612-4737-8ff2-2b1564879a1a",
+                            EmailConfirmed = false,
+                            FirstName = "Jane",
+                            LastName = "Doe",
+                            LockoutEnabled = false,
+                            NormalizedUserName = "THEREALJANE",
+                            PasswordHash = "AQAAAAIAAYagAAAAEJuekNSMjW8cExriBEWGQHWgyrhynuH5bUOmOaIWRUGJe6ack7/W5UMm1BBJRW/JzQ==",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
+                            UserName = "therealjane"
+                        },
+                        new
+                        {
+                            Id = new Guid("29506ae4-eccc-47d8-94ed-ec6ffc8023c5"),
+                            AccessFailedCount = 0,
+                            Birthday = new DateTime(1990, 4, 4, 21, 0, 0, 0, DateTimeKind.Utc),
+                            ConcurrencyStamp = "8bb833cd-6eaf-41e8-968b-f7d651742e4b",
+                            EmailConfirmed = false,
+                            FirstName = "Henry",
+                            LastName = "Wilson",
+                            LockoutEnabled = false,
+                            NormalizedUserName = "ALAKAZAM",
+                            PasswordHash = "AQAAAAIAAYagAAAAEG0VVK0BOZNtYhhqHth3/C9SpGDw36HXzNSrNnRwa5k2pzlmuJQz1uiR6Jzn6Ffq6g==",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
+                            UserName = "Alakazam"
+                        },
+                        new
+                        {
+                            Id = new Guid("1976a0d1-d843-4c6a-a746-1d909178d1de"),
+                            AccessFailedCount = 0,
+                            Birthday = new DateTime(1984, 7, 6, 21, 0, 0, 0, DateTimeKind.Utc),
+                            ConcurrencyStamp = "69981037-0d24-43db-86ed-f06f9d4e111a",
+                            EmailConfirmed = false,
+                            FirstName = "Lee",
+                            LastName = "Everett",
+                            LockoutEnabled = false,
+                            NormalizedUserName = "LEE",
+                            PasswordHash = "AQAAAAIAAYagAAAAECeIIeEiq8j2E/TMnBzNUrAmNqn9Q4re+CLGmcPgEdmRE8FMf+Ya+aIthTfzImewyg==",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
+                            UserName = "lee"
+                        },
+                        new
+                        {
+                            Id = new Guid("4e592c87-0e1f-4b64-97f2-31aa0444705d"),
+                            AccessFailedCount = 0,
+                            Birthday = new DateTime(2002, 6, 3, 21, 0, 0, 0, DateTimeKind.Utc),
+                            ConcurrencyStamp = "27031db9-a7e6-4096-b465-8b8d216364f6",
+                            EmailConfirmed = false,
+                            FirstName = "Ryota",
+                            LastName = "Mitarai",
+                            LockoutEnabled = false,
+                            NormalizedUserName = "RYOTA1",
+                            PasswordHash = "AQAAAAIAAYagAAAAEEJsHqpOhlbFYpjfIAeueDcAA9w1cZ6mApA71iT9XSIr0kj0xXSLJXZ4DDOIK/iJCw==",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
+                            UserName = "ryota1"
+                        },
+                        new
+                        {
+                            Id = new Guid("a6795017-baf4-477f-b289-fbf01e755dd8"),
+                            AccessFailedCount = 0,
+                            Birthday = new DateTime(1981, 9, 26, 21, 0, 0, 0, DateTimeKind.Utc),
+                            ConcurrencyStamp = "fe08eb4a-cdb9-40ea-a5da-ae6874864927",
+                            EmailConfirmed = false,
+                            FirstName = "Joel",
+                            LastName = "Miller",
+                            LockoutEnabled = false,
+                            NormalizedUserName = "TEXAS",
+                            PasswordHash = "AQAAAAIAAYagAAAAENvrSATgeFvQz7Zkls0jfC9PIRmozGQoPiM5putJqewKxpY3tIcROcVMOSwt5HhZ4A==",
+                            PhoneNumberConfirmed = false,
+                            TwoFactorEnabled = false,
+                            UserName = "texas"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole<System.Guid>", b =>

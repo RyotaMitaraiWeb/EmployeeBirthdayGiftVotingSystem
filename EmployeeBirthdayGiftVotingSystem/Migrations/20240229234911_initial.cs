@@ -4,6 +4,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace EmployeeBirthdayGiftVotingSystem.Migrations
 {
     /// <inheritdoc />
@@ -158,6 +160,19 @@ namespace EmployeeBirthdayGiftVotingSystem.Migrations
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUsers",
+                columns: new[] { "Id", "AccessFailedCount", "Birthday", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
+                values: new object[,]
+                {
+                    { new Guid("1976a0d1-d843-4c6a-a746-1d909178d1de"), 0, new DateTime(1984, 7, 6, 21, 0, 0, 0, DateTimeKind.Utc), "69981037-0d24-43db-86ed-f06f9d4e111a", null, false, "Lee", "Everett", false, null, null, "LEE", "AQAAAAIAAYagAAAAECeIIeEiq8j2E/TMnBzNUrAmNqn9Q4re+CLGmcPgEdmRE8FMf+Ya+aIthTfzImewyg==", null, false, null, false, "lee" },
+                    { new Guid("29506ae4-eccc-47d8-94ed-ec6ffc8023c5"), 0, new DateTime(1990, 4, 4, 21, 0, 0, 0, DateTimeKind.Utc), "8bb833cd-6eaf-41e8-968b-f7d651742e4b", null, false, "Henry", "Wilson", false, null, null, "ALAKAZAM", "AQAAAAIAAYagAAAAEG0VVK0BOZNtYhhqHth3/C9SpGDw36HXzNSrNnRwa5k2pzlmuJQz1uiR6Jzn6Ffq6g==", null, false, null, false, "Alakazam" },
+                    { new Guid("4e592c87-0e1f-4b64-97f2-31aa0444705d"), 0, new DateTime(2002, 6, 3, 21, 0, 0, 0, DateTimeKind.Utc), "27031db9-a7e6-4096-b465-8b8d216364f6", null, false, "Ryota", "Mitarai", false, null, null, "RYOTA1", "AQAAAAIAAYagAAAAEEJsHqpOhlbFYpjfIAeueDcAA9w1cZ6mApA71iT9XSIr0kj0xXSLJXZ4DDOIK/iJCw==", null, false, null, false, "ryota1" },
+                    { new Guid("6dc922b1-3987-4a34-83ec-c8b27a718fbb"), 0, new DateTime(1999, 1, 1, 22, 0, 0, 0, DateTimeKind.Utc), "da13eb63-5612-4737-8ff2-2b1564879a1a", null, false, "Jane", "Doe", false, null, null, "THEREALJANE", "AQAAAAIAAYagAAAAEJuekNSMjW8cExriBEWGQHWgyrhynuH5bUOmOaIWRUGJe6ack7/W5UMm1BBJRW/JzQ==", null, false, null, false, "therealjane" },
+                    { new Guid("8018e901-3aa6-4345-8675-fadbb6852c7b"), 0, new DateTime(1998, 12, 31, 22, 0, 0, 0, DateTimeKind.Utc), "db84812e-567c-48a4-a218-b3188082f2f5", null, false, "John", "Doe", false, null, null, "THEREALJOHN", "AQAAAAIAAYagAAAAEHOlTLQ1ClmzrSJStpYeEyt3NvnY5TRVyvaQtXmSNd2V6aH9plVqlRXqFXkN0yOPEw==", null, false, null, false, "therealjohn" },
+                    { new Guid("a6795017-baf4-477f-b289-fbf01e755dd8"), 0, new DateTime(1981, 9, 26, 21, 0, 0, 0, DateTimeKind.Utc), "fe08eb4a-cdb9-40ea-a5da-ae6874864927", null, false, "Joel", "Miller", false, null, null, "TEXAS", "AQAAAAIAAYagAAAAENvrSATgeFvQz7Zkls0jfC9PIRmozGQoPiM5putJqewKxpY3tIcROcVMOSwt5HhZ4A==", null, false, null, false, "texas" }
                 });
 
             migrationBuilder.CreateIndex(
