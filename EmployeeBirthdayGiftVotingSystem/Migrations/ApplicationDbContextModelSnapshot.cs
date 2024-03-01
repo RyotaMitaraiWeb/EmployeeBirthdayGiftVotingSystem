@@ -22,6 +22,75 @@ namespace EmployeeBirthdayGiftVotingSystem.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
+            modelBuilder.Entity("EmployeeBirthdayGiftVotingSystem.Data.Entities.Gift", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("ImageFileName")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Gift");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Description = "A pair of joycons for the Nintendo Switch. Thejoycons will be bought brand new, so hopefully they won't drift.",
+                            ImageFileName = "joycons.jpg",
+                            Name = "Joycons"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Description = "A high-quality pizza cutter wheel, made of Swedish steel.",
+                            ImageFileName = "pizzacutter.jpg",
+                            Name = "Pizza cutter wheel"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Description = "A mug with text that reveals how everyone really feels.",
+                            ImageFileName = "mug.jpg",
+                            Name = "\"I hate Mondays\" mug"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Description = "What people would describe as a \"Rubik Pyramid\".",
+                            ImageFileName = "pyraminx.jpg",
+                            Name = "Pyraminx"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Description = "A license for the new and totally existant and non-fake Java implementation, which can be executed inside the browser.",
+                            ImageFileName = "fake-javascript-license.png",
+                            Name = "Fake Java license"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Description = "A wand that grants any wish (when those wishes will be granted remains to be seen).",
+                            ImageFileName = "magic-wand.png",
+                            Name = "Magic Wand"
+                        });
+                });
+
             modelBuilder.Entity("EmployeeBirthdayGiftVotingSystem.Data.Entities.Identity.ApplicationUser", b =>
                 {
                     b.Property<Guid>("Id")
@@ -105,13 +174,13 @@ namespace EmployeeBirthdayGiftVotingSystem.Migrations
                             Id = new Guid("8018e901-3aa6-4345-8675-fadbb6852c7b"),
                             AccessFailedCount = 0,
                             Birthday = new DateTime(1998, 12, 31, 22, 0, 0, 0, DateTimeKind.Utc),
-                            ConcurrencyStamp = "01d02111-be7d-4400-bf39-295268c0c230",
+                            ConcurrencyStamp = "ec3cd3b8-f7ae-4f8f-b567-702eb969a2fd",
                             EmailConfirmed = false,
                             FirstName = "John",
                             LastName = "Doe",
                             LockoutEnabled = false,
                             NormalizedUserName = "THEREALJOHN",
-                            PasswordHash = "AQAAAAIAAYagAAAAEGGOLaIPLroGe/xNnfc3puOCe5qVrdBIArG3ByHTdIkwgXPhFePn+KCDtp+AMn6WDg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEJXBZgHhzWTdz+ublLuozY2n+5p/bF0zDpMKiPYVpQuugHIWXg8jx7GaqFVAjPBexw==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "fe3ce740-6429-43e7-9e24-c00907285858",
                             TwoFactorEnabled = false,
@@ -122,13 +191,13 @@ namespace EmployeeBirthdayGiftVotingSystem.Migrations
                             Id = new Guid("6dc922b1-3987-4a34-83ec-c8b27a718fbb"),
                             AccessFailedCount = 0,
                             Birthday = new DateTime(1999, 1, 1, 22, 0, 0, 0, DateTimeKind.Utc),
-                            ConcurrencyStamp = "026c0896-b559-48dd-851f-327380877eb3",
+                            ConcurrencyStamp = "ab3f8259-f9ee-47e4-b5f2-1986726eff16",
                             EmailConfirmed = false,
                             FirstName = "Jane",
                             LastName = "Doe",
                             LockoutEnabled = false,
                             NormalizedUserName = "THEREALJANE",
-                            PasswordHash = "AQAAAAIAAYagAAAAEEeRRWC43PikLwtAZjGg+yDAV/rTTG2c46YexTmDHQNXI8xnvsmpPuCJSEW4DD2HEw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEETfO7Ak/KSadIiM885Xp8JA1gIhIr5Pt6FYpPL5VKD3z9snQTl5IYgshbScWCln1Q==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "12490346-a2e1-4a60-9d0f-e3dd4b2a0fb5",
                             TwoFactorEnabled = false,
@@ -139,13 +208,13 @@ namespace EmployeeBirthdayGiftVotingSystem.Migrations
                             Id = new Guid("29506ae4-eccc-47d8-94ed-ec6ffc8023c5"),
                             AccessFailedCount = 0,
                             Birthday = new DateTime(1990, 4, 4, 21, 0, 0, 0, DateTimeKind.Utc),
-                            ConcurrencyStamp = "d093c9a4-28bf-4721-9b82-f7d1feba7c06",
+                            ConcurrencyStamp = "458ba691-31df-4a61-8228-22ba5a9f500a",
                             EmailConfirmed = false,
                             FirstName = "Henry",
                             LastName = "Wilson",
                             LockoutEnabled = false,
                             NormalizedUserName = "ALAKAZAM",
-                            PasswordHash = "AQAAAAIAAYagAAAAENvzsDn4iLCTOJmrU41Matn5I5EZYusqu78LLYZFpTR5WMJqSZaVxUoUpZn5QrQakw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEAaurajwqkfA78B85lDBZ69nj/L38gFGdrCHJyELhF+ArqU/TN5LEEarE3W0EZI+7Q==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "229f7ec6-a5bb-4630-8339-dde015920848",
                             TwoFactorEnabled = false,
@@ -156,13 +225,13 @@ namespace EmployeeBirthdayGiftVotingSystem.Migrations
                             Id = new Guid("1976a0d1-d843-4c6a-a746-1d909178d1de"),
                             AccessFailedCount = 0,
                             Birthday = new DateTime(1984, 7, 6, 21, 0, 0, 0, DateTimeKind.Utc),
-                            ConcurrencyStamp = "aead823b-04e3-48e5-ac90-542e21413138",
+                            ConcurrencyStamp = "7449ee23-7fa0-4adb-a7bc-de8ec44b3099",
                             EmailConfirmed = false,
                             FirstName = "Lee",
                             LastName = "Everett",
                             LockoutEnabled = false,
                             NormalizedUserName = "LEE",
-                            PasswordHash = "AQAAAAIAAYagAAAAEDymtVdGi3iSd1UNH+lGHO5aDSwWYX0KcrJAtUPVhy01Hu+LW1+jU7jaKa6ZBL4aGA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEPqCmCOeSW0m5JHO6U8GRrG329+FDaORL0g4dWnOEe7C26yHVtZFbe+lQynZbNNQEg==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "83d9f9b9-aa23-43b3-a755-78650e128929",
                             TwoFactorEnabled = false,
@@ -173,13 +242,13 @@ namespace EmployeeBirthdayGiftVotingSystem.Migrations
                             Id = new Guid("4e592c87-0e1f-4b64-97f2-31aa0444705d"),
                             AccessFailedCount = 0,
                             Birthday = new DateTime(2002, 6, 3, 21, 0, 0, 0, DateTimeKind.Utc),
-                            ConcurrencyStamp = "fa544b8c-3c47-4f30-8a0e-724a0712e743",
+                            ConcurrencyStamp = "7da3b2f7-6c9f-4f27-bf59-f517a3db4b10",
                             EmailConfirmed = false,
                             FirstName = "Ryota",
                             LastName = "Mitarai",
                             LockoutEnabled = false,
                             NormalizedUserName = "RYOTA1",
-                            PasswordHash = "AQAAAAIAAYagAAAAEKbduC/MdT1fRBYL3pHDu4uC+x1uxR7Y67NkX/6rvSbqks8B6y9gKYArX+jflpn9gA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAELqHvpE5clSwYZREf7n4lwF4VvaTYQk4K6h7H26mfpvfVxW+QJJsGdDn38A3cA+QhQ==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "375e952e-67a1-4ea1-a5a2-4ed5f79da8c4",
                             TwoFactorEnabled = false,
@@ -190,13 +259,13 @@ namespace EmployeeBirthdayGiftVotingSystem.Migrations
                             Id = new Guid("a6795017-baf4-477f-b289-fbf01e755dd8"),
                             AccessFailedCount = 0,
                             Birthday = new DateTime(1981, 9, 26, 21, 0, 0, 0, DateTimeKind.Utc),
-                            ConcurrencyStamp = "b5a6fc2d-adc6-4632-b004-cc72a7f548a2",
+                            ConcurrencyStamp = "1e99330e-4730-4e46-ab18-a03ee44e0001",
                             EmailConfirmed = false,
                             FirstName = "Joel",
                             LastName = "Miller",
                             LockoutEnabled = false,
                             NormalizedUserName = "TEXAS",
-                            PasswordHash = "AQAAAAIAAYagAAAAEPE7NNKXRlZswib1tDl46FtPCH3KVS+bgY8vJhihNQuQTbLAA6GuOQ4JHBZnQeRoNw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEFfv8d5ub/Usc5Aie/Aw7ZxSCvlKkmmfIC9V3ijIDRUQqWJQeqL+grBBboXVxQvxWA==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "74b72bf3-6f9f-46bb-bddc-b227bdbeb1e4",
                             TwoFactorEnabled = false,

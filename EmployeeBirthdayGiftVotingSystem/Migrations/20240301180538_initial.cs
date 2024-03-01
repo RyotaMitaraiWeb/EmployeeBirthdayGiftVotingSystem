@@ -57,6 +57,21 @@ namespace EmployeeBirthdayGiftVotingSystem.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Gift",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Name = table.Column<string>(type: "text", nullable: false),
+                    Description = table.Column<string>(type: "text", nullable: false),
+                    ImageFileName = table.Column<string>(type: "text", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Gift", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
                 columns: table => new
                 {
@@ -167,12 +182,25 @@ namespace EmployeeBirthdayGiftVotingSystem.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "Birthday", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { new Guid("1976a0d1-d843-4c6a-a746-1d909178d1de"), 0, new DateTime(1984, 7, 6, 21, 0, 0, 0, DateTimeKind.Utc), "aead823b-04e3-48e5-ac90-542e21413138", null, false, "Lee", "Everett", false, null, null, "LEE", "AQAAAAIAAYagAAAAEDymtVdGi3iSd1UNH+lGHO5aDSwWYX0KcrJAtUPVhy01Hu+LW1+jU7jaKa6ZBL4aGA==", null, false, "83d9f9b9-aa23-43b3-a755-78650e128929", false, "lee" },
-                    { new Guid("29506ae4-eccc-47d8-94ed-ec6ffc8023c5"), 0, new DateTime(1990, 4, 4, 21, 0, 0, 0, DateTimeKind.Utc), "d093c9a4-28bf-4721-9b82-f7d1feba7c06", null, false, "Henry", "Wilson", false, null, null, "ALAKAZAM", "AQAAAAIAAYagAAAAENvzsDn4iLCTOJmrU41Matn5I5EZYusqu78LLYZFpTR5WMJqSZaVxUoUpZn5QrQakw==", null, false, "229f7ec6-a5bb-4630-8339-dde015920848", false, "Alakazam" },
-                    { new Guid("4e592c87-0e1f-4b64-97f2-31aa0444705d"), 0, new DateTime(2002, 6, 3, 21, 0, 0, 0, DateTimeKind.Utc), "fa544b8c-3c47-4f30-8a0e-724a0712e743", null, false, "Ryota", "Mitarai", false, null, null, "RYOTA1", "AQAAAAIAAYagAAAAEKbduC/MdT1fRBYL3pHDu4uC+x1uxR7Y67NkX/6rvSbqks8B6y9gKYArX+jflpn9gA==", null, false, "375e952e-67a1-4ea1-a5a2-4ed5f79da8c4", false, "ryota1" },
-                    { new Guid("6dc922b1-3987-4a34-83ec-c8b27a718fbb"), 0, new DateTime(1999, 1, 1, 22, 0, 0, 0, DateTimeKind.Utc), "026c0896-b559-48dd-851f-327380877eb3", null, false, "Jane", "Doe", false, null, null, "THEREALJANE", "AQAAAAIAAYagAAAAEEeRRWC43PikLwtAZjGg+yDAV/rTTG2c46YexTmDHQNXI8xnvsmpPuCJSEW4DD2HEw==", null, false, "12490346-a2e1-4a60-9d0f-e3dd4b2a0fb5", false, "therealjane" },
-                    { new Guid("8018e901-3aa6-4345-8675-fadbb6852c7b"), 0, new DateTime(1998, 12, 31, 22, 0, 0, 0, DateTimeKind.Utc), "01d02111-be7d-4400-bf39-295268c0c230", null, false, "John", "Doe", false, null, null, "THEREALJOHN", "AQAAAAIAAYagAAAAEGGOLaIPLroGe/xNnfc3puOCe5qVrdBIArG3ByHTdIkwgXPhFePn+KCDtp+AMn6WDg==", null, false, "fe3ce740-6429-43e7-9e24-c00907285858", false, "therealjohn" },
-                    { new Guid("a6795017-baf4-477f-b289-fbf01e755dd8"), 0, new DateTime(1981, 9, 26, 21, 0, 0, 0, DateTimeKind.Utc), "b5a6fc2d-adc6-4632-b004-cc72a7f548a2", null, false, "Joel", "Miller", false, null, null, "TEXAS", "AQAAAAIAAYagAAAAEPE7NNKXRlZswib1tDl46FtPCH3KVS+bgY8vJhihNQuQTbLAA6GuOQ4JHBZnQeRoNw==", null, false, "74b72bf3-6f9f-46bb-bddc-b227bdbeb1e4", false, "texas" }
+                    { new Guid("1976a0d1-d843-4c6a-a746-1d909178d1de"), 0, new DateTime(1984, 7, 6, 21, 0, 0, 0, DateTimeKind.Utc), "7449ee23-7fa0-4adb-a7bc-de8ec44b3099", null, false, "Lee", "Everett", false, null, null, "LEE", "AQAAAAIAAYagAAAAEPqCmCOeSW0m5JHO6U8GRrG329+FDaORL0g4dWnOEe7C26yHVtZFbe+lQynZbNNQEg==", null, false, "83d9f9b9-aa23-43b3-a755-78650e128929", false, "lee" },
+                    { new Guid("29506ae4-eccc-47d8-94ed-ec6ffc8023c5"), 0, new DateTime(1990, 4, 4, 21, 0, 0, 0, DateTimeKind.Utc), "458ba691-31df-4a61-8228-22ba5a9f500a", null, false, "Henry", "Wilson", false, null, null, "ALAKAZAM", "AQAAAAIAAYagAAAAEAaurajwqkfA78B85lDBZ69nj/L38gFGdrCHJyELhF+ArqU/TN5LEEarE3W0EZI+7Q==", null, false, "229f7ec6-a5bb-4630-8339-dde015920848", false, "Alakazam" },
+                    { new Guid("4e592c87-0e1f-4b64-97f2-31aa0444705d"), 0, new DateTime(2002, 6, 3, 21, 0, 0, 0, DateTimeKind.Utc), "7da3b2f7-6c9f-4f27-bf59-f517a3db4b10", null, false, "Ryota", "Mitarai", false, null, null, "RYOTA1", "AQAAAAIAAYagAAAAELqHvpE5clSwYZREf7n4lwF4VvaTYQk4K6h7H26mfpvfVxW+QJJsGdDn38A3cA+QhQ==", null, false, "375e952e-67a1-4ea1-a5a2-4ed5f79da8c4", false, "ryota1" },
+                    { new Guid("6dc922b1-3987-4a34-83ec-c8b27a718fbb"), 0, new DateTime(1999, 1, 1, 22, 0, 0, 0, DateTimeKind.Utc), "ab3f8259-f9ee-47e4-b5f2-1986726eff16", null, false, "Jane", "Doe", false, null, null, "THEREALJANE", "AQAAAAIAAYagAAAAEETfO7Ak/KSadIiM885Xp8JA1gIhIr5Pt6FYpPL5VKD3z9snQTl5IYgshbScWCln1Q==", null, false, "12490346-a2e1-4a60-9d0f-e3dd4b2a0fb5", false, "therealjane" },
+                    { new Guid("8018e901-3aa6-4345-8675-fadbb6852c7b"), 0, new DateTime(1998, 12, 31, 22, 0, 0, 0, DateTimeKind.Utc), "ec3cd3b8-f7ae-4f8f-b567-702eb969a2fd", null, false, "John", "Doe", false, null, null, "THEREALJOHN", "AQAAAAIAAYagAAAAEJXBZgHhzWTdz+ublLuozY2n+5p/bF0zDpMKiPYVpQuugHIWXg8jx7GaqFVAjPBexw==", null, false, "fe3ce740-6429-43e7-9e24-c00907285858", false, "therealjohn" },
+                    { new Guid("a6795017-baf4-477f-b289-fbf01e755dd8"), 0, new DateTime(1981, 9, 26, 21, 0, 0, 0, DateTimeKind.Utc), "1e99330e-4730-4e46-ab18-a03ee44e0001", null, false, "Joel", "Miller", false, null, null, "TEXAS", "AQAAAAIAAYagAAAAEFfv8d5ub/Usc5Aie/Aw7ZxSCvlKkmmfIC9V3ijIDRUQqWJQeqL+grBBboXVxQvxWA==", null, false, "74b72bf3-6f9f-46bb-bddc-b227bdbeb1e4", false, "texas" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Gift",
+                columns: new[] { "Id", "Description", "ImageFileName", "Name" },
+                values: new object[,]
+                {
+                    { 1, "A pair of joycons for the Nintendo Switch. Thejoycons will be bought brand new, so hopefully they won't drift.", "joycons.jpg", "Joycons" },
+                    { 2, "A high-quality pizza cutter wheel, made of Swedish steel.", "pizzacutter.jpg", "Pizza cutter wheel" },
+                    { 3, "A mug with text that reveals how everyone really feels.", "mug.jpg", "\"I hate Mondays\" mug" },
+                    { 4, "What people would describe as a \"Rubik Pyramid\".", "pyraminx.jpg", "Pyraminx" },
+                    { 5, "A license for the new and totally existant and non-fake Java implementation, which can be executed inside the browser.", "fake-javascript-license.png", "Fake Java license" },
+                    { 6, "A wand that grants any wish (when those wishes will be granted remains to be seen).", "magic-wand.png", "Magic Wand" }
                 });
 
             migrationBuilder.CreateIndex(
@@ -230,6 +258,9 @@ namespace EmployeeBirthdayGiftVotingSystem.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "Gift");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

@@ -12,6 +12,7 @@ namespace EmployeeBirthdayGiftVotingSystem.Data
         {
             base.OnModelCreating(builder);
             builder.ApplyConfiguration(new ApplicationUserSeeder());
+            builder.ApplyConfiguration(new GiftSeeder());
         }
     }
 }
