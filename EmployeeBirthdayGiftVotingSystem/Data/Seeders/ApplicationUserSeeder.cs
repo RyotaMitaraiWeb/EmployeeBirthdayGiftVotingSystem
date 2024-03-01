@@ -19,6 +19,7 @@ namespace EmployeeBirthdayGiftVotingSystem.Data.Seeders
                     PasswordHash = this._passwordHasher.HashPassword(null!, "123456"),
                     NormalizedUserName = "THEREALJOHN",
                     Birthday = new DateTime(year: 1999, month: 1, day: 1).ToUniversalTime(),
+                    SecurityStamp = "fe3ce740-6429-43e7-9e24-c00907285858",
                 },
                 new ApplicationUser()
                 {
@@ -29,6 +30,7 @@ namespace EmployeeBirthdayGiftVotingSystem.Data.Seeders
                     PasswordHash = this._passwordHasher.HashPassword(null!, "654321"),
                     NormalizedUserName = "THEREALJANE",
                     Birthday = new DateTime(year: 1999, month: 1, day: 2).ToUniversalTime(),
+                    SecurityStamp = "12490346-a2e1-4a60-9d0f-e3dd4b2a0fb5",
                 },
                 new ApplicationUser()
                 {
@@ -39,6 +41,7 @@ namespace EmployeeBirthdayGiftVotingSystem.Data.Seeders
                     PasswordHash = this._passwordHasher.HashPassword(null!, "abrakadabra"),
                     NormalizedUserName = "ALAKAZAM",
                     Birthday = new DateTime(year: 1990, month: 4, day: 5).ToUniversalTime(),
+                    SecurityStamp = "229f7ec6-a5bb-4630-8339-dde015920848",
                 },
                 new ApplicationUser()
                 {
@@ -49,6 +52,7 @@ namespace EmployeeBirthdayGiftVotingSystem.Data.Seeders
                     PasswordHash = this._passwordHasher.HashPassword(null!, "password"),
                     NormalizedUserName = "LEE",
                     Birthday = new DateTime(year: 1984, month: 7, day: 7).ToUniversalTime(),
+                    SecurityStamp = "83d9f9b9-aa23-43b3-a755-78650e128929",
                 },
                 new ApplicationUser()
                 {
@@ -59,6 +63,7 @@ namespace EmployeeBirthdayGiftVotingSystem.Data.Seeders
                     PasswordHash = this._passwordHasher.HashPassword(null!, "abcde"),
                     NormalizedUserName = "RYOTA1",
                     Birthday = new DateTime(year: 2002, month: 6, day: 4).ToUniversalTime(),
+                    SecurityStamp = "375e952e-67a1-4ea1-a5a2-4ed5f79da8c4",
                 },
                 new ApplicationUser()
                 {
@@ -69,6 +74,7 @@ namespace EmployeeBirthdayGiftVotingSystem.Data.Seeders
                     PasswordHash = this._passwordHasher.HashPassword(null!, "austin"),
                     NormalizedUserName = "TEXAS",
                     Birthday = new DateTime(year: 1981, month: 9, day: 27).ToUniversalTime(),
+                    SecurityStamp = "74b72bf3-6f9f-46bb-bddc-b227bdbeb1e4",
                 }
             );
         }
