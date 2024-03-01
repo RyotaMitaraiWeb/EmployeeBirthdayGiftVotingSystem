@@ -24,5 +24,14 @@ namespace EmployeeBirthdayGiftVotingSystem.Services.GiftService
                 ImageFileName = g.ImageFileName,
             }).ToListAsync();
         }
+
+        public async Task<IEnumerable<GiftVoteViewModel>> GetGiftsForVoting()
+        {
+            return await this._repository.AllReadonly<Gift>().Select(g => new GiftVoteViewModel()
+            {
+                Id = g.Id,
+                Name = g.Name,
+            }).ToListAsync();
+        }
     }
 }

@@ -7,5 +7,7 @@ namespace EmployeeBirthdayGiftVotingSystem.Contracts
     {
         Task<bool> CheckIfGiftExists(int id);
         Task<IEnumerable<AllGiftsViewModel>> GetAllGifts();
+
+        Task<IEnumerable<GiftVoteViewModel>> GetGiftsForVoting();
     }
 }
