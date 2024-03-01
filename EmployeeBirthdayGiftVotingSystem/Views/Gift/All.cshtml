@@ -1,0 +1,14 @@
+﻿@model IEnumerable<EmployeeBirthdayGiftVotingSystem.Models.Gift.AllGiftsViewModel>;
+
+@{
+    ViewData["Title"] = "List of all gifts";
+}
+
+<h1>List of all gifts</h1>
+
+@foreach (var gift in Model)
+{
+    <h2>@gift.Name</h2>
+    <img src="~/gift-images/@gift.ImageFileName" />
+    <p><strong>Description:</strong> @gift.Description</p>
+}
