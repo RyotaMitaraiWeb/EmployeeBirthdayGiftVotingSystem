@@ -1,5 +1,7 @@
+using EmployeeBirthdayGiftVotingSystem.Contracts;
 using EmployeeBirthdayGiftVotingSystem.Data;
 using EmployeeBirthdayGiftVotingSystem.Data.Entities.Identity;
+using EmployeeBirthdayGiftVotingSystem.Data.Repositories;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Npgsql;
@@ -40,6 +42,8 @@ namespace EmployeeBirthdayGiftVotingSystem
 
             builder.Services.AddAuthentication();
             builder.Services.AddAuthorization();
+
+            builder.Services.AddScoped<IRepository, Repository>();
 
             var app = builder.Build();
 
