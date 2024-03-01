@@ -9,6 +9,15 @@
     <link rel="stylesheet" href="~/EmployeeBirthdayGiftVotingSystem.styles.css" asp-append-version="true" />
 </head>
 <body>
+    <nav>
+        @if (User.Identity != null && User.Identity.IsAuthenticated)
+        {
+            <form asp-controller="Authentication" asp-action="Logout">
+                <button type="submit">Logout</button>
+            </form>
+            <div>Hello, @User.Identity.Name</div>
+        }
+    </nav>
     <div>
         <main>
             @RenderBody()

@@ -1,7 +1,9 @@
 ﻿using EmployeeBirthdayGiftVotingSystem.Data.Entities.Identity;
 using EmployeeBirthdayGiftVotingSystem.Models.Authentication;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace EmployeeBirthdayGiftVotingSystem.Areas.Authentication
 {
@@ -46,6 +48,15 @@ namespace EmployeeBirthdayGiftVotingSystem.Areas.Authentication
         private void AddFailedLoginError()
         {
             this.ViewData["FailedLogin"] = "Wrong username or password!";
+        }
+
+        [Authorize]
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        public async Task<ActionResult> Logout()
+        {
+            await this._signInManager.SignOutAsync();
+            return RedirectToAction(nameof(this.Login));
         }
     }
 }
