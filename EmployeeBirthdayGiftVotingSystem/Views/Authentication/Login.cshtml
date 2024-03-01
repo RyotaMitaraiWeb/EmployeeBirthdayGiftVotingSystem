@@ -1,0 +1,27 @@
+﻿@model EmployeeBirthdayGiftVotingSystem.Models.Authentication.LoginViewModel;
+
+@{
+    ViewData["Title"] = "Login";
+    string? errorMessage = (string?)ViewData["FailedLogin"];
+}
+
+<h1>Loginr</h1>
+
+<form asp-action="Login">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div>
+        <label asp-for="Username"></label>
+        <input asp-for="Username" />
+        <span asp-validation-for="Username" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="Password"></label>
+        <input asp-for="Password" />
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+    @if (errorMessage != null)
+    {
+        <div class="text-danger">@errorMessage</div>
+    }
+    <input type="submit" />
+</form>

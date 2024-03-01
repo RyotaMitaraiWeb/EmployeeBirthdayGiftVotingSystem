@@ -3,12 +3,21 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - EmployeeBirthdayGiftVotingSystem</title>
+    <title>@ViewData["Title"] - Employee Birthday Gift Voting System</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/EmployeeBirthdayGiftVotingSystem.styles.css" asp-append-version="true" />
 </head>
 <body>
+    <nav>
+        @if (User.Identity != null && User.Identity.IsAuthenticated)
+        {
+            <form asp-controller="Authentication" asp-action="Logout">
+                <button type="submit">Logout</button>
+            </form>
+            <div>Hello, @User.Identity.Name</div>
+        }
+    </nav>
     <div>
         <main>
             @RenderBody()
