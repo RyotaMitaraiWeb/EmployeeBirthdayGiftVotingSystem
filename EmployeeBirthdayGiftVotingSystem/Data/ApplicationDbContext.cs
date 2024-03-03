@@ -19,7 +19,7 @@ namespace EmployeeBirthdayGiftVotingSystem.Data
 
             builder.Entity<BirthdayVote>()
                 .HasOne(bv => bv.Creator)
-                .WithOne()
+                .WithMany()
                 .OnDelete(DeleteBehavior.Restrict);
             
             builder.ApplyConfiguration(new ApplicationUserSeeder());

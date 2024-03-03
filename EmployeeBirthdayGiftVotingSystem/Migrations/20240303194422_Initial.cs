@@ -9,7 +9,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace EmployeeBirthdayGiftVotingSystem.Migrations
 {
     /// <inheritdoc />
-    public partial class initial : Migration
+    public partial class Initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -242,12 +242,12 @@ namespace EmployeeBirthdayGiftVotingSystem.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "Birthday", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { new Guid("1976a0d1-d843-4c6a-a746-1d909178d1de"), 0, new DateTime(1984, 7, 6, 21, 0, 0, 0, DateTimeKind.Utc), "a70d5662-5a73-48ec-b19d-fc603f4e6d6e", null, false, "Lee", "Everett", false, null, null, "LEE", "AQAAAAIAAYagAAAAEDJgqiNOpHoG58cN0dAbmNQ5KLMHoQxWYMea3M2r62eEizdXnQGC4aker9UhaA2PrA==", null, false, "83d9f9b9-aa23-43b3-a755-78650e128929", false, "lee" },
-                    { new Guid("29506ae4-eccc-47d8-94ed-ec6ffc8023c5"), 0, new DateTime(1990, 4, 4, 21, 0, 0, 0, DateTimeKind.Utc), "6363ce7a-41f0-4aed-bc57-50f0b35cd80b", null, false, "Henry", "Wilson", false, null, null, "ALAKAZAM", "AQAAAAIAAYagAAAAEJ2KBY84sPr7bYjAzwbOWNyRasaVFTjsEVo1pvrbwJqCgRv+ZyFo7OIwEt85BkLwaw==", null, false, "229f7ec6-a5bb-4630-8339-dde015920848", false, "Alakazam" },
-                    { new Guid("4e592c87-0e1f-4b64-97f2-31aa0444705d"), 0, new DateTime(2002, 6, 3, 21, 0, 0, 0, DateTimeKind.Utc), "032c3d83-7801-465e-bc07-df81be491a2d", null, false, "Ryota", "Mitarai", false, null, null, "RYOTA1", "AQAAAAIAAYagAAAAEIindtGKCDg+9CSI19MKidhs2QBdYQ+62K8ZWNEzDkDQ5vEHrHbRPCfG4qrRSHKrug==", null, false, "375e952e-67a1-4ea1-a5a2-4ed5f79da8c4", false, "ryota1" },
-                    { new Guid("6dc922b1-3987-4a34-83ec-c8b27a718fbb"), 0, new DateTime(1999, 1, 1, 22, 0, 0, 0, DateTimeKind.Utc), "c3049614-e89d-49a0-9704-1429b2face7a", null, false, "Jane", "Doe", false, null, null, "THEREALJANE", "AQAAAAIAAYagAAAAEHT1X+U/8C2jBMAQw2rxlZzuxKU+yrUQ+wOShT75ULFCQvpUsiszf6Vj1AH0JXVW6A==", null, false, "12490346-a2e1-4a60-9d0f-e3dd4b2a0fb5", false, "therealjane" },
-                    { new Guid("8018e901-3aa6-4345-8675-fadbb6852c7b"), 0, new DateTime(1998, 12, 31, 22, 0, 0, 0, DateTimeKind.Utc), "6d550631-346d-44e0-b049-71b6d901d5d3", null, false, "John", "Doe", false, null, null, "THEREALJOHN", "AQAAAAIAAYagAAAAEBl15kH35JKE63SJSWgEKy63xIlkwaMuFBH73/o90VMYCJQ7YlsDHbccV7qG43JQiQ==", null, false, "fe3ce740-6429-43e7-9e24-c00907285858", false, "therealjohn" },
-                    { new Guid("a6795017-baf4-477f-b289-fbf01e755dd8"), 0, new DateTime(1981, 9, 26, 21, 0, 0, 0, DateTimeKind.Utc), "f8be73ba-d497-4b7d-b76c-5421a9580e74", null, false, "Joel", "Miller", false, null, null, "TEXAS", "AQAAAAIAAYagAAAAEMbzXldPrCTGXLPLjMVq1aUF1E9AUbzbzgW88P6nSgB4L5DVhwElI4zi798/jwCIwQ==", null, false, "74b72bf3-6f9f-46bb-bddc-b227bdbeb1e4", false, "texas" }
+                    { new Guid("1976a0d1-d843-4c6a-a746-1d909178d1de"), 0, new DateTime(1984, 7, 6, 21, 0, 0, 0, DateTimeKind.Utc), "9630aa77-ee68-49cc-8931-32460dd13112", null, false, "Lee", "Everett", false, null, null, "LEE", "AQAAAAIAAYagAAAAEBF96hPbuYkcCyA2+KJhiAp4AS5kWWejwOovYq3zLP0NvlUy3Ws2lc5p5juiAEsEng==", null, false, "83d9f9b9-aa23-43b3-a755-78650e128929", false, "lee" },
+                    { new Guid("29506ae4-eccc-47d8-94ed-ec6ffc8023c5"), 0, new DateTime(1990, 4, 4, 21, 0, 0, 0, DateTimeKind.Utc), "0bb01ec1-7f2c-422a-96c1-20baa2aec144", null, false, "Henry", "Wilson", false, null, null, "ALAKAZAM", "AQAAAAIAAYagAAAAEMGUr7efWGiD1Gl/mFJaPBzkIr39U3ayM4TI3c/oUQozBFAstfFQQ4WlmqR/w5Q64A==", null, false, "229f7ec6-a5bb-4630-8339-dde015920848", false, "Alakazam" },
+                    { new Guid("4e592c87-0e1f-4b64-97f2-31aa0444705d"), 0, new DateTime(2002, 6, 3, 21, 0, 0, 0, DateTimeKind.Utc), "9290469e-e686-4fcc-ab8a-2eea902364be", null, false, "Ryota", "Mitarai", false, null, null, "RYOTA1", "AQAAAAIAAYagAAAAEDuz/8k/BWXqL1PohMSfay2kt9w6YiMOKXPRSELKK7PTRuVuXUFODtLOj0q+Hog4cg==", null, false, "375e952e-67a1-4ea1-a5a2-4ed5f79da8c4", false, "ryota1" },
+                    { new Guid("6dc922b1-3987-4a34-83ec-c8b27a718fbb"), 0, new DateTime(1999, 1, 1, 22, 0, 0, 0, DateTimeKind.Utc), "c7874886-8d46-4c12-99e0-9c6b2400a4cf", null, false, "Jane", "Doe", false, null, null, "THEREALJANE", "AQAAAAIAAYagAAAAELmREJIMDBuHIf4RfiAAEt98MiZnCoIBY83nkDLeJ4Zm0SJCDSUsOzFcBMPZgZ2KjQ==", null, false, "12490346-a2e1-4a60-9d0f-e3dd4b2a0fb5", false, "therealjane" },
+                    { new Guid("8018e901-3aa6-4345-8675-fadbb6852c7b"), 0, new DateTime(1998, 12, 31, 22, 0, 0, 0, DateTimeKind.Utc), "97f47df1-5e22-4884-a989-64dbc2bcda0d", null, false, "John", "Doe", false, null, null, "THEREALJOHN", "AQAAAAIAAYagAAAAECtQ+LcXcMVOdjZu5eJP/Vd9tspqrWsq8LjpA6LGZn63WZqUfw8CSDkxg7BcAmCCHw==", null, false, "fe3ce740-6429-43e7-9e24-c00907285858", false, "therealjohn" },
+                    { new Guid("a6795017-baf4-477f-b289-fbf01e755dd8"), 0, new DateTime(1981, 9, 26, 21, 0, 0, 0, DateTimeKind.Utc), "3a92a167-c28a-46ed-9ce5-760fd312e7b1", null, false, "Joel", "Miller", false, null, null, "TEXAS", "AQAAAAIAAYagAAAAEA9z0beUNTc4CCUhsbADLIbfPrmPSmz5EUF6dRFuw3pXA7R87XXqrYipSgEyl+un3A==", null, false, "74b72bf3-6f9f-46bb-bddc-b227bdbeb1e4", false, "texas" }
                 });
 
             migrationBuilder.InsertData(
@@ -303,8 +303,7 @@ namespace EmployeeBirthdayGiftVotingSystem.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_BirthdayVotes_CreatorId",
                 table: "BirthdayVotes",
-                column: "CreatorId",
-                unique: true);
+                column: "CreatorId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_BirthdayVotes_EmployeeId",
