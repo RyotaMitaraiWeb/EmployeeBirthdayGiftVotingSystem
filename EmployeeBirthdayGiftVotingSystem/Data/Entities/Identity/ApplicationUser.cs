@@ -1,12 +1,12 @@
 ﻿using EmployeeBirthdayGiftVotingSystem.Common;
 using Microsoft.AspNetCore.Identity;
+using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace EmployeeBirthdayGiftVotingSystem.Data.Entities.Identity
 {
     public class ApplicationUser : IdentityUser<Guid>
     {
-
         [Required]
         [MaxLength(UserValidationRules.FirstName.MaxLength)]
         public string? FirstName { get; set; }
@@ -17,5 +17,7 @@ namespace EmployeeBirthdayGiftVotingSystem.Data.Entities.Identity
 
         [Required]
         public DateTime Birthday { get; set; }
+
+        public List<BirthdayVote> BirthdayVotes { get; set; } = [];
     }
 }
