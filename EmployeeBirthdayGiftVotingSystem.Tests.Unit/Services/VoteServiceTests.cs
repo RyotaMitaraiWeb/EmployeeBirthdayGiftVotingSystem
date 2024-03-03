@@ -165,7 +165,7 @@ namespace EmployeeBirthdayGiftVotingSystem.Tests.Unit.Services
             Guid userId = Guid.NewGuid();
 
             List<UserGiftVote> votes = [
-                new() { Id = 6, VoterId = userId, GiftId = null, BirthdayVoteId = 3 }
+                new() { Id = 6, VoterId = userId, GiftId = null, BirthdayVoteId = 3, BirthdayVote = new BirthdayVote() { IsActive = true }, }
             ];
 
             this.Repository.All<UserGiftVote>().Returns(votes.BuildMock());
@@ -185,7 +185,7 @@ namespace EmployeeBirthdayGiftVotingSystem.Tests.Unit.Services
             Guid userId = Guid.NewGuid();
 
             List<UserGiftVote> votes = [
-                new() { Id = 6, VoterId = Guid.NewGuid(), GiftId = null, BirthdayVoteId = 3 }
+                new() { Id = 6, VoterId = Guid.NewGuid(), GiftId = null, BirthdayVoteId = 3, BirthdayVote = new BirthdayVote() { IsActive = true }, }
             ];
 
             this.Repository.All<UserGiftVote>().Returns(votes.BuildMock());
@@ -200,7 +200,22 @@ namespace EmployeeBirthdayGiftVotingSystem.Tests.Unit.Services
             Guid userId = Guid.NewGuid();
 
             List<UserGiftVote> votes = [
-                new() { Id = 6, VoterId = userId, GiftId = 1, BirthdayVoteId = 3 }
+                new() { Id = 6, VoterId = userId, GiftId = 1, BirthdayVoteId = 3, BirthdayVote = new BirthdayVote() { IsActive = true }, }
+            ];
+
+            this.Repository.All<UserGiftVote>().Returns(votes.BuildMock());
+
+            var result = await this.VoteService.CastVote(userId.ToString(), 3, 2);
+            Assert.That(result, Is.Null);
+        }
+
+        [Test]
+        public async Task Test_CastVoteReturnsNullIfVotingIsNotActive()
+        {
+            Guid userId = Guid.NewGuid();
+
+            List<UserGiftVote> votes = [
+                new() { Id = 6, VoterId = userId, GiftId = null, BirthdayVoteId = 3, BirthdayVote = new BirthdayVote() { IsActive = false }, }
             ];
 
             this.Repository.All<UserGiftVote>().Returns(votes.BuildMock());
@@ -215,7 +230,7 @@ namespace EmployeeBirthdayGiftVotingSystem.Tests.Unit.Services
             Guid userId = Guid.NewGuid();
 
             List<UserGiftVote> votes = [
-                new() { Id = 6, VoterId = userId, GiftId = null, BirthdayVoteId = 3 }
+                new() { Id = 6, VoterId = userId, GiftId = null, BirthdayVoteId = 3, BirthdayVote = new BirthdayVote() { IsActive = true }, }
             ];
 
             this.Repository.All<UserGiftVote>().Returns(votes.BuildMock());
