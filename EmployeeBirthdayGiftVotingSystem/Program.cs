@@ -3,6 +3,7 @@ using EmployeeBirthdayGiftVotingSystem.Data;
 using EmployeeBirthdayGiftVotingSystem.Data.Entities.Identity;
 using EmployeeBirthdayGiftVotingSystem.Data.Repositories;
 using EmployeeBirthdayGiftVotingSystem.Services.GiftService;
+using EmployeeBirthdayGiftVotingSystem.Services.VoteService;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Npgsql;
@@ -46,6 +47,7 @@ namespace EmployeeBirthdayGiftVotingSystem
 
             builder.Services.AddScoped<IRepository, Repository>();
             builder.Services.AddScoped<IGiftService, GiftService>();
+            builder.Services.AddScoped<IVoteService, VoteService>();
 
             var app = builder.Build();
 
