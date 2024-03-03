@@ -18,7 +18,9 @@ namespace EmployeeBirthdayGiftVotingSystem.Services.VoteService
                 .All<UserGiftVote>()
                 .Where(ugv => Guid.Equals(Guid.Parse(userId), ugv.VoterId)
                         && ugv.BirthdayVoteId == voteId
-                        && ugv.GiftId == null)
+                        && ugv.GiftId == null
+                        && ugv.BirthdayVote.IsActive
+                    )
                 .FirstOrDefaultAsync();
 
             if (userVote == null)
@@ -78,7 +80,7 @@ namespace EmployeeBirthdayGiftVotingSystem.Services.VoteService
             return birthdayVote.Id;
         }
 
-        public Task<int?> EndVote(Guid userId)
+        public Task<int?> EndVote(Guid creatorId, int birthdayVoteId)
         {
             throw new NotImplementedException();
         }
