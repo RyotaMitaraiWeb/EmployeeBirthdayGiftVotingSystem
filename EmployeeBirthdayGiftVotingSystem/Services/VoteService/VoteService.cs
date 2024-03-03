@@ -12,9 +12,23 @@ namespace EmployeeBirthdayGiftVotingSystem.Services.VoteService
         private readonly IRepository _repository = repository;
         private readonly UserManager<ApplicationUser> _userManager = userManager;
 
-        public Task<int?> CastVote(string userId, int voteId, int giftId)
+        public async Task<int?> CastVote(string userId, int voteId, int giftId)
         {
-            throw new NotImplementedException();
+            var userVote = await this._repository
+                .All<UserGiftVote>()
+                .Where(ugv => Guid.Equals(Guid.Parse(userId), ugv.VoterId)
+                        && ugv.BirthdayVoteId == voteId
+                        && ugv.GiftId == null)
+                .FirstOrDefaultAsync();
+
+            if (userVote == null)
+            {
+                return null;
+            }
+
+            userVote.GiftId = giftId;
+            await this._repository.SaveChangesAsync();
+            return userVote.Id;
         }
 
         public async Task<int?> CreateVote(CreateVoteViewModel vote, string creatorId, DateTime today)

@@ -132,5 +132,96 @@ namespace EmployeeBirthdayGiftVotingSystem.Tests.Unit.Services
 
             Assert.That(result, Is.Null);
         }
+
+        [Test]
+        public async Task Test_GetAllUsersThatCanHaveAVoteCorrectlyFiltersOutUsersThatAreNotEligible()
+        {
+            Guid userId = Guid.NewGuid();
+            DateTime today = new(2022, 5, 5);
+            var users = new List<ApplicationUser>()
+                {
+                    // Filter out the user requesting the list
+                    new() { Id = userId, UserName = "a", FirstName = "a", LastName = "a", BirthdayVotes = [new BirthdayVote() { Id = 1, EmployeeId = Guid.NewGuid(), Year = 2021, IsActive = false }] },
+
+                    // Filter out a user that's already had a voting in the current year
+                    new() { Id = Guid.NewGuid(), UserName = "b", FirstName = "b", LastName = "b", BirthdayVotes = [new BirthdayVote() { Id = 2, EmployeeId = Guid.NewGuid(), Year = today.Year, IsActive = false }] },
+
+                    // Filter out a user that currently has a voting (regardless of the year)
+                    new() { Id = Guid.NewGuid(), UserName = "c", FirstName = "c", LastName = "c", BirthdayVotes = [new BirthdayVote() { Id = 3, EmployeeId = Guid.NewGuid(), Year = 2021, IsActive = true }] },
+
+                    // Valid case
+                    new() { Id = Guid.NewGuid(), UserName = "d", FirstName = "d", LastName = "d", BirthdayVotes = [new BirthdayVote() { Id = 3, EmployeeId = Guid.NewGuid(), Year = 2021, IsActive = false }] },
+            };
+
+            this.UserManager.Users.Returns(users.BuildMock());
+
+            var result = await this.VoteService.GetAllUsersThatCanHaveAVote(userId.ToString(), today);
+            Assert.That(result.Count(), Is.EqualTo(1));
+        }
+
+        [Test]
+        public async Task Test_CastVoteReturnsTheUserGiftVoteIdWhenSuccessful()
+        {
+            Guid userId = Guid.NewGuid();
+
+            List<UserGiftVote> votes = [
+                new() { Id = 6, VoterId = userId, GiftId = null, BirthdayVoteId = 3 }
+            ];
+
+            this.Repository.All<UserGiftVote>().Returns(votes.BuildMock());
+            this.Repository.SaveChangesAsync().Returns(1);
+
+            var result = await this.VoteService.CastVote(userId.ToString(), 3, 2);
+            Assert.Multiple(() =>
+            {
+                Assert.That(votes.First().GiftId, Is.EqualTo(2));
+                Assert.That(result, Is.EqualTo(6));
+            });
+        }
+
+        [Test]
+        public async Task Test_CastVoteReturnsNullIfTheyAreNotInTheVoteList()
+        {
+            Guid userId = Guid.NewGuid();
+
+            List<UserGiftVote> votes = [
+                new() { Id = 6, VoterId = Guid.NewGuid(), GiftId = null, BirthdayVoteId = 3 }
+            ];
+
+            this.Repository.All<UserGiftVote>().Returns(votes.BuildMock());
+
+            var result = await this.VoteService.CastVote(userId.ToString(), 3, 2);
+            Assert.That(result, Is.Null);
+        }
+
+        [Test]
+        public async Task Test_CastVoteReturnsNullIfUserHasAlreadyVoted()
+        {
+            Guid userId = Guid.NewGuid();
+
+            List<UserGiftVote> votes = [
+                new() { Id = 6, VoterId = userId, GiftId = 1, BirthdayVoteId = 3 }
+            ];
+
+            this.Repository.All<UserGiftVote>().Returns(votes.BuildMock());
+
+            var result = await this.VoteService.CastVote(userId.ToString(), 3, 2);
+            Assert.That(result, Is.Null);
+        }
+
+        [Test]
+        public async Task Test_CastVoteReturnsNullIfVoteDoesNotExist()
+        {
+            Guid userId = Guid.NewGuid();
+
+            List<UserGiftVote> votes = [
+                new() { Id = 6, VoterId = userId, GiftId = null, BirthdayVoteId = 3 }
+            ];
+
+            this.Repository.All<UserGiftVote>().Returns(votes.BuildMock());
+
+            var result = await this.VoteService.CastVote(userId.ToString(), 11111, 2);
+            Assert.That(result, Is.Null);
+        }
     }
 }
