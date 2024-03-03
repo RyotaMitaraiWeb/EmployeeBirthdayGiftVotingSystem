@@ -1,0 +1,17 @@
+﻿@model EmployeeBirthdayGiftVotingSystem.Models.Vote.CreateVoteListViewModel;
+@{
+    ViewData["Title"] = "Start a vote for a birthday gift!";
+}
+
+<h1>Start a vote for a birthday gift!</h1>
+
+<form asp-controller="Vote" asp-action="Create" method="post">
+    <label for="employee">Select an employee</label>
+    <select id="employee" asp-for="EmployeeId">
+        @foreach (var user in Model.AvailableUsers)
+        {
+            <option value="@user.EmployeeId">@user.FirstName @user.LastName (<i>&copy;@user.Username</i>)</option>
+        }
+    </select>
+    <input type="submit" value="Initiate a vote" />
+</form>
