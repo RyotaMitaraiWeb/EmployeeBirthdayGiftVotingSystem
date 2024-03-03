@@ -238,5 +238,76 @@ namespace EmployeeBirthdayGiftVotingSystem.Tests.Unit.Services
             var result = await this.VoteService.CastVote(userId.ToString(), 11111, 2);
             Assert.That(result, Is.Null);
         }
+
+        [Test]
+        public async Task Test_EndVoteReturnsTheBirthdayVoteIdWhenSuccessful()
+        {
+            Guid userId = Guid.NewGuid();
+            BirthdayVote vote = new()
+            {
+                Id = 22,
+                EmployeeId = Guid.NewGuid(),
+                IsActive = true,
+                Year = 2022,
+                CreatorId = userId,
+            };
+
+            this.Repository.GetByIdAsync<BirthdayVote>(22).Returns(vote);
+            this.Repository.SaveChangesAsync().Returns(1);
+
+            var result = await this.VoteService.EndVote(userId.ToString(), 22);
+            Assert.Multiple(() =>
+            {
+                Assert.That(vote.IsActive, Is.False);
+                Assert.That(result, Is.EqualTo(22));
+            });
+        }
+
+        [Test]
+        public async Task Test_EndVoteReturnsNullIfTheUserIsNotTheCreator()
+        {
+            Guid userId = Guid.NewGuid();
+            BirthdayVote vote = new()
+            {
+                Id = 22,
+                EmployeeId = Guid.NewGuid(),
+                IsActive = true,
+                Year = 2022,
+                CreatorId = Guid.NewGuid(),
+            };
+
+            this.Repository.GetByIdAsync<BirthdayVote>(22).Returns(vote);
+            var result = await this.VoteService.EndVote(userId.ToString(), 22);
+            Assert.That(result, Is.Null);
+        }
+
+        [Test]
+        public async Task Test_EndVoteReturnsNullIfTheVoteDoesNotExist()
+        {
+            Guid userId = Guid.NewGuid();
+            BirthdayVote? vote = null;
+
+            this.Repository.GetByIdAsync<BirthdayVote>(22).Returns(vote);
+            var result = await this.VoteService.EndVote(userId.ToString(), 22);
+            Assert.That(result, Is.Null);
+        }
+
+        [Test]
+        public async Task Test_EndVoteReturnsNullIfTheVoteIsNotActive()
+        {
+            Guid userId = Guid.NewGuid();
+            BirthdayVote vote = new()
+            {
+                Id = 22,
+                EmployeeId = Guid.NewGuid(),
+                IsActive = false,
+                Year = 2022,
+                CreatorId = userId,
+            };
+
+            this.Repository.GetByIdAsync<BirthdayVote>(22).Returns(vote);
+            var result = await this.VoteService.EndVote(userId.ToString(), 22);
+            Assert.That(result, Is.Null);
+        }
     }
 }

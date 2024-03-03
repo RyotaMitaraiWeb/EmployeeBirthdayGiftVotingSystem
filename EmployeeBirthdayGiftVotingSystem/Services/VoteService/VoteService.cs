@@ -80,9 +80,23 @@ namespace EmployeeBirthdayGiftVotingSystem.Services.VoteService
             return birthdayVote.Id;
         }
 
-        public Task<int?> EndVote(Guid creatorId, int birthdayVoteId)
+        public async Task<int?> EndVote(string creatorId, int birthdayVoteId)
         {
-            throw new NotImplementedException();
+            var birthdayVote = await this._repository.GetByIdAsync<BirthdayVote>(birthdayVoteId);
+            if (birthdayVote == null)
+            {
+                return null;
+            }
+
+            if (!birthdayVote.IsActive || !Guid.Equals(birthdayVote.CreatorId, Guid.Parse(creatorId)))
+            {
+                return null;
+            }
+
+            birthdayVote.IsActive = false;
+            await this._repository.SaveChangesAsync();
+
+            return birthdayVote.Id;
         }
 
         public async Task<IEnumerable<CreateVoteViewModel>> GetAllUsersThatCanHaveAVote(string creatorId, DateTime today)
