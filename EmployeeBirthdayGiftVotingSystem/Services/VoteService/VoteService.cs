@@ -69,9 +69,20 @@ namespace EmployeeBirthdayGiftVotingSystem.Services.VoteService
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<CreateVoteListViewModel>> GetAllUsersThatCanHaveAVote(string creatorId, DateTime today)
+        public async Task<IEnumerable<CreateVoteViewModel>> GetAllUsersThatCanHaveAVote(string creatorId, DateTime today)
         {
-            throw new NotImplementedException();
+            var users = await this._userManager.Users
+                .Where(u =>
+                    !u.Id.Equals(Guid.Parse(creatorId)) && u.BirthdayVotes.All(bv => !bv.IsActive && bv.Year < today.Year))
+                .Select(u => new CreateVoteViewModel()
+                {
+                    EmployeeId = u.Id.ToString(),
+                    FirstName = u.FirstName!,
+                    LastName = u.LastName!,
+                    Username = u.UserName!,
+                })
+                .ToListAsync();
+            return users;
         }
     }
 }

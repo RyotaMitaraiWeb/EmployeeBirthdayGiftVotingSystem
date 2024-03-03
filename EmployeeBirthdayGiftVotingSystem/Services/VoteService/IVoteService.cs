@@ -7,7 +7,7 @@ namespace EmployeeBirthdayGiftVotingSystem.Services.VoteService
         Task<int?> CreateVote(CreateVoteViewModel vote, string creatorId, DateTime today);
         Task<int?> EndVote(Guid userId);
         Task<int?> CastVote(string userId, int voteId, int giftId);
-        Task<IEnumerable<CreateVoteListViewModel>> GetAllUsersThatCanHaveAVote(string creatorId, DateTime today);
+        Task<IEnumerable<CreateVoteViewModel>> GetAllUsersThatCanHaveAVote(string creatorId, DateTime today);
 
     }
 }
