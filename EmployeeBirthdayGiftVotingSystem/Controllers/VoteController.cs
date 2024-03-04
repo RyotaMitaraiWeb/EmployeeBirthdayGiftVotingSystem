@@ -13,6 +13,14 @@ namespace EmployeeBirthdayGiftVotingSystem.Controllers
         private readonly IVoteService _voteService = voteService;
 
         [HttpGet]
+        public async Task<ActionResult> Index()
+        {
+            string id = this.User.FindFirstValue(ClaimTypes.NameIdentifier)!;
+            var users = await this._voteService.GetVotesIndexList(id);
+            return View(users);
+        }
+
+        [HttpGet]
         public async Task<ActionResult> Create()
         {
             string creatorId = this.User.FindFirstValue(ClaimTypes.NameIdentifier)!;
