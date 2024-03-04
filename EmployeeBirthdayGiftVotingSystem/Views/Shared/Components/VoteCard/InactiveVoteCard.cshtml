@@ -1,0 +1,12 @@
+﻿@using System.Security.Claims;
+@model EmployeeBirthdayGiftVotingSystem.Models.Vote.VoteIndexViewModel;
+
+<article>
+    <h2>@Model.Username</h2>
+    <div>(@Model.FirstName @Model.LastName)</div>
+    <div>Born on @Model.EmployeeBirthday.Month / @Model.EmployeeBirthday.Day</div>
+    <span>Concluded</span>
+    <div>
+        <a asp-controller="Vote" asp-action="Details" asp-route-id="@Model.Id">View</a>
+    </div>
+</article>

@@ -1,0 +1,12 @@
+﻿@model IEnumerable<EmployeeBirthdayGiftVotingSystem.Models.Vote.VoteIndexViewModel>;
+@using EmployeeBirthdayGiftVotingSystem.Views.Shared.Components.VoteCard
+@{
+    ViewData["Title"] = "All votes for birthday gift";
+}
+
+<h1>All votes for birthday gifts</h1>
+
+@foreach (var voting in Model)
+{
+    @await Component.InvokeAsync(typeof(VoteCardViewComponent), new { vote = voting })
+}
