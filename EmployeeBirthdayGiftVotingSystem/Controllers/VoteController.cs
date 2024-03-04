@@ -1,7 +1,6 @@
 ﻿using EmployeeBirthdayGiftVotingSystem.Models.Vote;
 using EmployeeBirthdayGiftVotingSystem.Services.VoteService;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 
@@ -18,6 +17,19 @@ namespace EmployeeBirthdayGiftVotingSystem.Controllers
             string id = this.User.FindFirstValue(ClaimTypes.NameIdentifier)!;
             var users = await this._voteService.GetVotesIndexList(id);
             return View(users);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> EndVote(int id)
+        {
+            string userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier)!;
+            int? votingId = await this._voteService.EndVote(userId, id);
+            if (votingId == null)
+            {
+                return Redirect(nameof(this.Index));
+            }
+
+            return Redirect($"/Vote/Details/{id}");
         }
 
         [HttpGet]

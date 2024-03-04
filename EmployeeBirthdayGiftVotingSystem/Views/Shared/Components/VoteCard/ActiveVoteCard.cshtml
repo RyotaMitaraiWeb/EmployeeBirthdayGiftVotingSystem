@@ -10,7 +10,7 @@
         <a asp-controller="Vote" asp-action="Details" asp-route-id="@Model.Id">View</a>
         @if (User.FindFirstValue(ClaimTypes.NameIdentifier) == Model.CreatorId)
         {
-            <form asp-controller="Vote" asp-action="End" asp-route-id="@Model.Id">
+            <form asp-controller="Vote" asp-action="EndVote" asp-route-id="@Model.Id">
                 <button type="Submit">End vote</button>
             </form>
         }
