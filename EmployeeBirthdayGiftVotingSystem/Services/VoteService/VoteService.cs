@@ -99,6 +99,28 @@ namespace EmployeeBirthdayGiftVotingSystem.Services.VoteService
             return birthdayVote.Id;
         }
 
+        public async Task<IEnumerable<VoteIndexViewModel>> GetVotesIndexList(string currentUserId
+            )
+        {
+            Guid id = Guid.Parse(currentUserId);
+            var users = await this._repository
+                .AllReadonly<BirthdayVote>()
+                .Where(bv => !bv.EmployeeId.Equals(id))
+                .Select(bv => new VoteIndexViewModel()
+                {
+                    Id = bv.Id,
+                    CreatorId = bv.CreatorId.ToString(),
+                    FirstName = bv.Creator.FirstName!,
+                    LastName = bv.Creator.LastName!,
+                    Username = bv.Creator.UserName!,
+                    IsActive = bv.IsActive,
+                    EmployeeBirthday = bv.Creator.Birthday,
+                })
+                .ToListAsync();
+
+            return users;
+        }
+
         public async Task<IEnumerable<CreateVoteViewModel>> GetAllUsersThatCanHaveAVote(string creatorId, DateTime today)
         {
             var users = await this._userManager.Users
@@ -114,5 +136,6 @@ namespace EmployeeBirthdayGiftVotingSystem.Services.VoteService
                 .ToListAsync();
             return users;
         }
+
     }
 }
