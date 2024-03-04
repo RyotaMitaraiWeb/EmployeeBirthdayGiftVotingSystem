@@ -1,0 +1,33 @@
+﻿@model EmployeeBirthdayGiftVotingSystem.Models.Vote.VoteDetailsViewModel;
+
+@{
+    ViewData["Title"] = $"Voting for a gift for {Model.Employee.FirstName} {Model.Employee.LastName}";
+}
+
+<h1>Voting for a gift for @Model.Employee.FirstName @Model.Employee.LastName</h1>
+
+<form asp-controller="Vote" asp-action="CastVote" method="post">
+    @foreach (var gift in Model.Gifts)
+    {
+        <div>
+            @if (Model.GiftVoteId == null)
+            {
+                <input id="@gift.Id" type="radio" asp-for="@Model.GiftVoteId" value="@gift.Id" />
+            }
+            else
+            {
+                <input disabled id="@gift.Id" type="radio" asp-for="@Model.GiftVoteId" value="@gift.Id" />
+            }
+            <label for="@gift.Id" asp-for="@Model.GiftVoteId">@gift.Name</label>
+        </div>
+    }
+
+    @if (Model.GiftVoteId != null)
+    {
+        <p>You have already voted!</p>
+    }
+    else
+    {
+        <button type="submit">Cast my vote</button>
+    }
+</form>

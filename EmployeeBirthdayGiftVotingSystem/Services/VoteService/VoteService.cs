@@ -137,5 +137,11 @@ namespace EmployeeBirthdayGiftVotingSystem.Services.VoteService
             return users;
         }
 
+        public async Task<BirthdayVote?> GetVoteDetails(int id)
+        {
+            return await this._repository.AllReadonly<BirthdayVote>()
+                .Include(bv => bv.Employee)
+                .FirstOrDefaultAsync(bv => bv.Id == id);
+        }
     }
 }
