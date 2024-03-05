@@ -1,4 +1,4 @@
-﻿using EmployeeBirthdayGiftVotingSystem.Data.Entities.Identity;
+﻿using EmployeeBirthdayGiftVotingSystem.Data.Entities;
 using EmployeeBirthdayGiftVotingSystem.Models.Vote;
 namespace EmployeeBirthdayGiftVotingSystem.Services.VoteService
 {
@@ -9,6 +9,6 @@ namespace EmployeeBirthdayGiftVotingSystem.Services.VoteService
         Task<int?> CastVote(string userId, int voteId, int giftId);
         Task<IEnumerable<CreateVoteViewModel>> GetAllUsersThatCanHaveAVote(string creatorId, DateTime today);
         Task<IEnumerable<VoteIndexViewModel>> GetVotesIndexList(string currentUserId);
-
+        Task<BirthdayVote?> GetVoteDetails(int id);
     }
 }
