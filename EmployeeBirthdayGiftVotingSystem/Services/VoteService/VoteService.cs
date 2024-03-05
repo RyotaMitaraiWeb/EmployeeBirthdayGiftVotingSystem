@@ -110,9 +110,9 @@ namespace EmployeeBirthdayGiftVotingSystem.Services.VoteService
                 {
                     Id = bv.Id,
                     CreatorId = bv.CreatorId.ToString(),
-                    FirstName = bv.Creator.FirstName!,
-                    LastName = bv.Creator.LastName!,
-                    Username = bv.Creator.UserName!,
+                    FirstName = bv.Employee.FirstName!,
+                    LastName = bv.Employee.LastName!,
+                    Username = bv.Employee.UserName!,
                     IsActive = bv.IsActive,
                     EmployeeBirthday = bv.Creator.Birthday,
                 })
