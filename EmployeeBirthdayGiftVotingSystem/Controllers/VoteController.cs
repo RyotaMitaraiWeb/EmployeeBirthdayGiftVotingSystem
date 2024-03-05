@@ -97,9 +97,38 @@ namespace EmployeeBirthdayGiftVotingSystem.Controllers
             {
                 VoteId = id,
                 GiftVoteId = giftVoteId,
-                Gifts = gifts,
                 Employee = vote.Employee,
             };
+
+            if (vote.IsActive)
+            {
+                model.Gifts = gifts;
+            }
+            else
+            {
+                Dictionary<string, IEnumerable<string>> votes = [];
+                foreach (var gift in gifts)
+                {
+                    votes[gift.Name] = new List<string>();
+                }
+
+                votes["Has not voted"] = new List<string>();
+
+                foreach (var userVote in vote.UserGiftVotes)
+                {
+                    string? gift = userVote.Gift?.Name;
+                    if (userVote.GiftId == null || gift == null)
+                    {
+                        votes["Has not voted"] = votes["Has not voted"].Append(userVote.Voter.UserName!);
+                    }
+                    else
+                    {
+                        votes[gift] = votes[gift].Append(userVote.Voter.UserName!);
+                    }
+                }
+
+                model.UserGiftVotes = votes;
+            }
 
             return View(model);
         }
