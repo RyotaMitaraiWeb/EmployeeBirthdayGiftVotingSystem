@@ -1,5 +1,4 @@
 ﻿using EmployeeBirthdayGiftVotingSystem.Contracts;
-using EmployeeBirthdayGiftVotingSystem.Data.Entities;
 using EmployeeBirthdayGiftVotingSystem.Models.Vote;
 using EmployeeBirthdayGiftVotingSystem.Services.VoteService;
 using Microsoft.AspNetCore.Authorization;
@@ -131,6 +130,32 @@ namespace EmployeeBirthdayGiftVotingSystem.Controllers
             }
 
             return View(model);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> CastVote(int id, VoteDetailsViewModel vote)
+        {
+            int giftId = vote.GiftVoteId ?? 0;
+            if (giftId == 0)
+            {
+                return Redirect($"/Vote/Details/{id}");
+            }
+
+            bool exists = await this._giftService.CheckIfGiftExists(giftId);
+            if (!exists)
+            {
+                return Redirect($"/Vote/Details/{id}");
+            }
+
+            string userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier)!;
+
+            int? voteId = await this._voteService.CastVote(userId, id, giftId);
+            if (voteId == null)
+            {
+                return Redirect($"/Vote/Details/{id}");
+            }
+
+            return Redirect($"/Vote/Details/{id}");
         }
     }
 }

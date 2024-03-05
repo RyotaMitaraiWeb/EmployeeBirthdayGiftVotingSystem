@@ -6,7 +6,7 @@
 
 <h1>Voting for a gift for @Model.Employee.FirstName @Model.Employee.LastName</h1>
 
-<form asp-controller="Vote" asp-action="CastVote" method="post">
+<form asp-controller="Vote" asp-action="CastVote" method="post" asp-route-id="@Model.VoteId">
     @if (Model.Gifts != null)
     {
         @foreach (var gift in Model.Gifts)
