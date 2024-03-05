@@ -71,7 +71,7 @@ namespace EmployeeBirthdayGiftVotingSystem.Controllers
                 return View(model);
             }
 
-            return Redirect("/Home/Index");
+            return Redirect($"/Vote/Details/{result}");
         }
 
         [HttpGet]
