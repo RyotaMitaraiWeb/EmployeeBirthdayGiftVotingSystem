@@ -1,4 +1,6 @@
 ﻿using EmployeeBirthdayGiftVotingSystem.Contracts;
+using EmployeeBirthdayGiftVotingSystem.Data.Entities;
+using EmployeeBirthdayGiftVotingSystem.Models.Gift;
 using EmployeeBirthdayGiftVotingSystem.Models.Vote;
 using EmployeeBirthdayGiftVotingSystem.Services.VoteService;
 using Microsoft.AspNetCore.Authorization;
@@ -105,28 +107,7 @@ namespace EmployeeBirthdayGiftVotingSystem.Controllers
             }
             else
             {
-                Dictionary<string, IEnumerable<string>> votes = [];
-                foreach (var gift in gifts)
-                {
-                    votes[gift.Name] = new List<string>();
-                }
-
-                votes["Has not voted"] = new List<string>();
-
-                foreach (var userVote in vote.UserGiftVotes)
-                {
-                    string? gift = userVote.Gift?.Name;
-                    if (userVote.GiftId == null || gift == null)
-                    {
-                        votes["Has not voted"] = votes["Has not voted"].Append(userVote.Voter.UserName!);
-                    }
-                    else
-                    {
-                        votes[gift] = votes[gift].Append(userVote.Voter.UserName!);
-                    }
-                }
-
-                model.UserGiftVotes = votes;
+                ArrangeResults(model, gifts, vote.UserGiftVotes);
             }
 
             return View(model);
@@ -156,6 +137,32 @@ namespace EmployeeBirthdayGiftVotingSystem.Controllers
             }
 
             return Redirect($"/Vote/Details/{id}");
+        }
+
+        private static void ArrangeResults(VoteDetailsViewModel model, IEnumerable<GiftVoteViewModel> gifts, IEnumerable<UserGiftVote> userGiftVotes)
+        {
+            Dictionary<string, IEnumerable<string>> votes = [];
+            foreach (var gift in gifts)
+            {
+                votes[gift.Name] = new List<string>();
+            }
+
+            votes["Has not voted"] = new List<string>();
+
+            foreach (var userVote in userGiftVotes)
+            {
+                string? gift = userVote.Gift?.Name;
+                if (userVote.GiftId == null || gift == null)
+                {
+                    votes["Has not voted"] = votes["Has not voted"].Append(userVote.Voter.UserName!);
+                }
+                else
+                {
+                    votes[gift] = votes[gift].Append(userVote.Voter.UserName!);
+                }
+            }
+
+            model.UserGiftVotes = votes;
         }
     }
 }

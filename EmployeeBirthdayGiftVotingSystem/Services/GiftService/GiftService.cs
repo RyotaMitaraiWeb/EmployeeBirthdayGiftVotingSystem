@@ -17,12 +17,14 @@ namespace EmployeeBirthdayGiftVotingSystem.Services.GiftService
 
         public async Task<IEnumerable<AllGiftsViewModel>> GetAllGifts()
         {
-            return await this._repository.AllReadonly<Gift>().Select(g => new AllGiftsViewModel()
-            {
-                Name = g.Name,
-                Description = g.Description,
-                ImageFileName = g.ImageFileName,
-            }).ToListAsync();
+            return await this._repository.AllReadonly<Gift>()
+                .OrderByDescending(g => g.Id)
+                .Select(g => new AllGiftsViewModel()
+                {
+                    Name = g.Name,
+                    Description = g.Description,
+                    ImageFileName = g.ImageFileName,
+                }).ToListAsync();
         }
 
         public async Task<IEnumerable<GiftVoteViewModel>> GetGiftsForVoting()

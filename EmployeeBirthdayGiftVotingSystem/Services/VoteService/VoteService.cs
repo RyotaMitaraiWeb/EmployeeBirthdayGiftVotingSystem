@@ -106,6 +106,7 @@ namespace EmployeeBirthdayGiftVotingSystem.Services.VoteService
             var users = await this._repository
                 .AllReadonly<BirthdayVote>()
                 .Where(bv => !bv.EmployeeId.Equals(id))
+                .OrderByDescending(bv => bv.Id)
                 .Select(bv => new VoteIndexViewModel()
                 {
                     Id = bv.Id,
@@ -114,7 +115,7 @@ namespace EmployeeBirthdayGiftVotingSystem.Services.VoteService
                     LastName = bv.Employee.LastName!,
                     Username = bv.Employee.UserName!,
                     IsActive = bv.IsActive,
-                    EmployeeBirthday = bv.Creator.Birthday,
+                    EmployeeBirthday = bv.Employee.Birthday,
                 })
                 .ToListAsync();
 
