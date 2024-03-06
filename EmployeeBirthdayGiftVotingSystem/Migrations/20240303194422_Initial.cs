@@ -255,7 +255,7 @@ namespace EmployeeBirthdayGiftVotingSystem.Migrations
                 columns: new[] { "Id", "Description", "ImageFileName", "Name" },
                 values: new object[,]
                 {
-                    { 1, "A pair of joycons for the Nintendo Switch. Thejoycons will be bought brand new, so hopefully they won't drift.", "joycons.jpg", "Joycons" },
+                    { 1, "A pair of joycons for the Nintendo Switch. The joycons will be bought brand new, so hopefully they won't drift.", "joycons.jpg", "Joycons" },
                     { 2, "A high-quality pizza cutter wheel, made of Swedish steel.", "pizzacutter.jpg", "Pizza cutter wheel" },
                     { 3, "A mug with text that reveals how everyone really feels.", "mug.jpg", "\"I hate Mondays\" mug" },
                     { 4, "What people would describe as a \"Rubik Pyramid\".", "pyraminx.jpg", "Pyraminx" },

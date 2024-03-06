@@ -79,7 +79,7 @@ namespace EmployeeBirthdayGiftVotingSystem.Migrations
                         new
                         {
                             Id = 1,
-                            Description = "A pair of joycons for the Nintendo Switch. Thejoycons will be bought brand new, so hopefully they won't drift.",
+                            Description = "A pair of joycons for the Nintendo Switch. The joycons will be bought brand new, so hopefully they won't drift.",
                             ImageFileName = "joycons.jpg",
                             Name = "Joycons"
                         },
