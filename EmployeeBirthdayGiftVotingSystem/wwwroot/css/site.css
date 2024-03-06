@@ -41,3 +41,16 @@ nav a:hover {
     gap: 16px;
     justify-content: center;
 }
+
+.gift {
+    margin: 0 auto;
+    margin-bottom: 2.5em;
+    text-align: center;
+    border-bottom: 1px solid gray;
+    width: 90%;
+}
+
+.gift img {
+    width: 150px;
+    height: 150px;
+}
