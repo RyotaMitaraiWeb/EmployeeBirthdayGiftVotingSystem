@@ -3,15 +3,15 @@
     ViewData["Title"] = "Start a vote for a birthday gift!";
 }
 
-<h1>Start a vote for a birthday gift!</h1>
+<h1 class="text-center">Start a vote for a birthday gift!</h1>
 
-<form asp-controller="Vote" asp-action="Create" method="post">
-    <label for="employee">Select an employee</label>
-    <select id="employee" asp-for="EmployeeId">
+<form asp-controller="Vote" asp-action="Create" method="post" class="text-center">
+    <label class="d-block fw-bold" for="employee">Select an employee</label>
+    <select class="text-center" id="employee" asp-for="EmployeeId">
         @foreach (var user in Model.AvailableUsers)
         {
             <option value="@user.EmployeeId">@user.FirstName @user.LastName (<i>&copy;@user.Username</i>)</option>
         }
     </select>
-    <input type="submit" value="Initiate a vote" />
+    <input class="d-block btn btn-dark mx-auto mt-4" type="submit" value="Initiate a vote" />
 </form>

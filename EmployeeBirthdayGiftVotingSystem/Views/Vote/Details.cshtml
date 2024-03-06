@@ -4,44 +4,51 @@
     ViewData["Title"] = $"Voting for a gift for {Model.Employee.FirstName} {Model.Employee.LastName}";
 }
 
-<h1>Voting for a gift for @Model.Employee.FirstName @Model.Employee.LastName</h1>
+<h1 class="text-center">Voting for a gift for @Model.Employee.FirstName @Model.Employee.LastName</h1>
 
 <form asp-controller="Vote" asp-action="CastVote" method="post" asp-route-id="@Model.VoteId">
-    @if (Model.Gifts != null)
-    {
-        @foreach (var gift in Model.Gifts)
+    <div>
+        @if (Model.Gifts != null)
         {
-            <div>
-                @if (Model.GiftVoteId == null)
-                {
-                    <input id="@gift.Id" type="radio" asp-for="@Model.GiftVoteId" value="@gift.Id" />
-                }
-                else
-                {
-                    <input disabled id="@gift.Id" type="radio" asp-for="@Model.GiftVoteId" value="@gift.Id" />
-                }
-                <label for="@gift.Id" asp-for="@Model.GiftVoteId">@gift.Name</label>
-            </div>
+            <p class="text-center"><a asp-controller="Gift" asp-action="All" class="fst-italic text-center">More details about the gifts</a></p>
+            @foreach (var gift in Model.Gifts)
+            {
+                <div class="d-flex flex-column align-items-center">
+                    <div class="d-inline-block text-left" style="width: 575px;">
+                        @if (Model.GiftVoteId == null)
+                        {
+                            <input id="@gift.Id" type="radio" asp-for="@Model.GiftVoteId" value="@gift.Id" />
+                        }
+                        else
+                        {
+                            <input disabled id="@gift.Id" type="radio" asp-for="@Model.GiftVoteId" value="@gift.Id" />
+                        }
+                        <label for="@gift.Id" asp-for="@Model.GiftVoteId">@gift.Name</label>
+                    </div>
+                </div>
+            }
+
+            @if (Model.GiftVoteId != null)
+            {
+                <p class="text-center">You have already voted!</p>
+            }
+            else
+            {
+                <button class="btn btn-dark d-block" style="margin: 0 auto" type="submit">Cast my vote</button>
+            }
         }
 
-        @if (Model.GiftVoteId != null)
+        @if (Model.UserGiftVotes != null)
         {
-            <p>You have already voted!</p>
+            <h2 class="text-center mb-4 mt-4">The vote has concluded. Here are the results:</h2>
+            @foreach (var gift in Model.UserGiftVotes)
+            {
+                <div class="mb-5">
+                    <h3 class="text-center mb-2">@gift.Key</h3>
+                    <p class="text-center">@(string.Join(", ", gift.Value))</p>
+                    <p class="text-center"><strong>Total amount:</strong> @gift.Value.Count()</p>
+                </div>
+            }
         }
-        else
-        {
-            <button type="submit">Cast my vote</button>
-        }
-    }
-    
-    @if (Model.UserGiftVotes != null)
-    {
-        <h2>The vote has concluded. Here are the results:</h2>
-        @foreach (var gift in Model.UserGiftVotes)
-        {
-            <h3>@gift.Key</h3>
-            <p>@(string.Join(", ", gift.Value))</p>
-            <p>Total amount: @gift.Value.Count()</p>
-        }
-    }
+    </div>
 </form>

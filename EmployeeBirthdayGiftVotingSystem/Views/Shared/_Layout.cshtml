@@ -9,13 +9,20 @@
     <link rel="stylesheet" href="~/EmployeeBirthdayGiftVotingSystem.styles.css" asp-append-version="true" />
 </head>
 <body>
-    <nav>
+    <nav class="bg-primary text-white d-flex justify-content-between align-items-center p-4">
         @if (User.Identity != null && User.Identity.IsAuthenticated)
         {
-            <form asp-controller="Authentication" asp-action="Logout">
-                <button type="submit">Logout</button>
-            </form>
-            <div>Hello, @User.Identity.Name</div>
+            <div class="d-flex align-items-center gap-4">
+                <a class="text-white" asp-controller="Vote" asp-action="Index">List of votes</a>
+                <a class="text-white" asp-controller="Vote" asp-action="Create">New vote</a>
+                <a class="text-white" asp-controller="Gift" asp-action="All">List of gifts</a>
+            </div>
+            <div class="d-flex align-items-center gap-4">
+                <div>Hello, @(User.Identity.Name)!</div>
+                <form asp-controller="Authentication" asp-action="Logout">
+                    <button class="btn btn-dark" type="submit">Logout</button>
+                </form>
+            </div>
         }
     </nav>
     <div>

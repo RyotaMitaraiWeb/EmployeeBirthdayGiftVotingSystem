@@ -1,0 +1,56 @@
+nav {
+    height: 50px;
+}
+
+nav a {
+    text-decoration: none;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+.login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.login div, .login label {
+    width: 500px;
+}
+
+.login label {
+    text-align: left;
+}
+
+.vote-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+}
+
+.vote-index {
+    width: 400px;
+    text-align: center;
+}
+
+.vote-index .actions {
+    gap: 16px;
+    justify-content: center;
+}
+
+.gift {
+    margin: 0 auto;
+    margin-bottom: 2.5em;
+    text-align: center;
+    border-bottom: 1px solid gray;
+    width: 90%;
+}
+
+.gift img {
+    width: 150px;
+    height: 150px;
+}

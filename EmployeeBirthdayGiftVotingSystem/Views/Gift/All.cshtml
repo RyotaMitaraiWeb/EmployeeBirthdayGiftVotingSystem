@@ -4,11 +4,13 @@
     ViewData["Title"] = "List of all gifts";
 }
 
-<h1>List of all gifts</h1>
+<h1 class="text-center mb-4">List of all gifts</h1>
 
 @foreach (var gift in Model)
 {
-    <h2>@gift.Name</h2>
-    <img src="~/gift-images/@gift.ImageFileName" />
-    <p><strong>Description:</strong> @gift.Description</p>
+    <article class="gift">
+        <h2 class="text-center">@gift.Name</h2>
+        <img class="d-block mx-auto" src="~/gift-images/@gift.ImageFileName" />
+        <p><strong>Description:</strong> @gift.Description</p>
+    </article>
 }

@@ -4,9 +4,11 @@
     ViewData["Title"] = "All votes for birthday gift";
 }
 
-<h1>All votes for birthday gifts</h1>
+<h1 class="text-center mb-4">All votes for birthday gifts</h1>
 
-@foreach (var voting in Model)
-{
-    @await Component.InvokeAsync(typeof(VoteCardViewComponent), new { vote = voting })
-}
+<section class="vote-list">
+    @foreach (var voting in Model)
+    {
+        @await Component.InvokeAsync(typeof(VoteCardViewComponent), new { vote = voting })
+    }
+</section>

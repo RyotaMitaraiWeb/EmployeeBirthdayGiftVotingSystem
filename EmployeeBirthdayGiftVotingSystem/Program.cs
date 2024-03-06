@@ -42,6 +42,11 @@ namespace EmployeeBirthdayGiftVotingSystem
                 options.Password.RequiredLength = 6;
             }).AddEntityFrameworkStores<ApplicationDbContext>();
 
+            builder.Services.ConfigureApplicationCookie(options =>
+            {
+                options.LoginPath = "/Authentication/Login";
+            });
+
             builder.Services.AddAuthentication();
             builder.Services.AddAuthorization();
 
