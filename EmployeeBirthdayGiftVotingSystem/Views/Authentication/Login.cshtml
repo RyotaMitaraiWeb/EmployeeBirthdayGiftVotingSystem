@@ -5,23 +5,29 @@
     string? errorMessage = (string?)ViewData["FailedLogin"];
 }
 
-<h1>Loginr</h1>
+<h1 class="text-center mb-4">Login</h1>
 
-<form asp-action="Login">
+<form asp-action="Login" class="login">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-    <div>
+    <div class="input-group mb-3">
         <label asp-for="Username"></label>
-        <input asp-for="Username" />
-        <span asp-validation-for="Username" class="text-danger"></span>
+        <input class="form-control" asp-for="Username" />
+        <div asp-validation-for="Username" class="text-danger"></div>
     </div>
-    <div>
+    <div class="input-group mb-3">
         <label asp-for="Password"></label>
-        <input asp-for="Password" />
-        <span asp-validation-for="Password" class="text-danger"></span>
+        <input class="form-control" asp-for="Password" />
+        <div asp-validation-for="Password" class="text-danger"></div>
     </div>
     @if (errorMessage != null)
     {
         <div class="text-danger">@errorMessage</div>
     }
-    <input type="submit" />
+    <input type="submit" class="btn btn-dark" value="Login" />
 </form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

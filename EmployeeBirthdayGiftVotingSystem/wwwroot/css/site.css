@@ -9,3 +9,18 @@ nav a {
 nav a:hover {
     text-decoration: underline;
 }
+
+.login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.login div, .login label {
+    width: 500px;
+}
+
+.login label {
+    text-align: left;
+}
