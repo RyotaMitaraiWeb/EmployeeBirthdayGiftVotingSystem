@@ -1,12 +1,14 @@
 ﻿@using System.Security.Claims;
 @model EmployeeBirthdayGiftVotingSystem.Models.Vote.VoteIndexViewModel;
 
-<article>
-    <h2>@Model.Username</h2>
-    <div>(@Model.FirstName @Model.LastName)</div>
-    <div>Born on @Model.EmployeeBirthday.Month / @Model.EmployeeBirthday.Day</div>
-    <span>Concluded</span>
-    <div>
-        <a asp-controller="Vote" asp-action="Details" asp-route-id="@Model.Id">View</a>
+<article class="card vote-index">
+    <div class="card-body">
+        <h2 class="card-title">@Model.Username</h2>
+        <div class="card-subtitle text-muted">(@Model.FirstName @Model.LastName)</div>
+        <div class="card-text">Born on @Model.EmployeeBirthday.Month / @Model.EmployeeBirthday.Day</div>
+        <span class="badge badge-secondary">Concluded</span>
+        <div class="d-flex align-items-center actions">
+            <a class="card-link" asp-controller="Vote" asp-action="Details" asp-route-id="@Model.Id">View</a>
+        </div>
     </div>
 </article>

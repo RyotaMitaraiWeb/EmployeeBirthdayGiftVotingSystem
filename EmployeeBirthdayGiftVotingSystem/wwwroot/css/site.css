@@ -24,3 +24,20 @@ nav a:hover {
 .login label {
     text-align: left;
 }
+
+.vote-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+}
+
+.vote-index {
+    width: 400px;
+    text-align: center;
+}
+
+.vote-index .actions {
+    gap: 16px;
+    justify-content: center;
+}
