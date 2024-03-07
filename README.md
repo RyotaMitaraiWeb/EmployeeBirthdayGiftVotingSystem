@@ -5,10 +5,10 @@
 The easiest way to run this app is to simply run the provided ``docker-compose`` file, which will take care of lifting the server. The only things you need to do manually are to run the migrations and potentially
 configure an HTTPS certificate. The Docker variant also provides you with a web interface for PGAdmin4 to manage the database with a GUI. You can access it on port 5433. Check the ``.env`` file for the default email and passwords
 
-Note that you may need to temporarily provide data about the database locally to run the migrations. Refer below for the ``usersecrets`` structure.
+Note that you may need to temporarily provide data about the database locally to run the migrations. Refer below for the ``secrets`` structure.
 
 ### Manually
-You can insert the following in ``usersecrets.json``:
+You can insert the following in ``secrets.json``:
 ```json
 {
   "DB_PASSWORD": "A!strongpassword1234",
